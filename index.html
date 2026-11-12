@@ -130,7 +130,7 @@ label{color:#35526f;font-weight:700;font-size:13px}
 </section>
 <section id="p3" hidden><div id="o3"></div></section>
 <p class="small">تأكد من النتائج الحرجة بمصدر معتمد قبل الاستخدام الفعلي.</p>
-<footer>إعداد: حسين عبدالله حسين</footer></main>
+<footer>إعداد: حسين عبدالله حسين<div id="offl" style="margin-top:6px"></div></footer></main>
 <script>/* محرك تحويل الإحداثيات (مأخوذ من ملف تحويل_احداثيات.xlsx) */
 function makeEngine(D){
   const OFF={red:0,green:3,brown:6,purple:9,orange:12};
@@ -317,5 +317,8 @@ document.querySelectorAll('#p1 input,#p2 input').forEach(i=>i.addEventListener('
 run1();
 $('enter').onclick=()=>{const s=$('splash');s.classList.add('out');$('app').hidden=false;setTimeout(()=>{s.hidden=true},520)};
 </script>
-<script>if('serviceWorker' in navigator&&location.protocol.indexOf('http')===0)addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){})});</script></body>
+<script>(function(){var el=document.getElementById('offl');
+if(!('serviceWorker' in navigator)||location.protocol.indexOf('http')!==0){if(el)el.textContent='هذا المتصفح لا يدعم العمل بدون إنترنت. افتح الرابط في كروم أو سفاري مباشرة.';return}
+if(el)el.textContent='جارٍ تجهيز العمل بدون إنترنت…';
+addEventListener('load',function(){navigator.serviceWorker.register('sw.js').then(function(){return navigator.serviceWorker.ready}).then(function(){return caches.match('index.html')}).then(function(h){if(el)el.textContent=h?'✓ جاهز للعمل بدون إنترنت':'لم يكتمل التجهيز — افتح الرابط مرة أخرى وأنت متصل بالإنترنت'}).catch(function(){if(el)el.textContent='تعذّر تجهيز العمل بدون إنترنت على هذا المتصفح'})})})();</script></body>
 </html>
